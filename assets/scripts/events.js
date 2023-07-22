@@ -1,0 +1,19 @@
+const button = document.querySelector('button');
+
+// button.onclick = function() {
+//     console.log('Love is the key...')
+// }
+
+// const buttonclickedHandler = () => {
+//     alert('Button was clicked')
+// }
+
+// const anotherButtonClickedHandler = () => {
+//     console.log('This was clicked')
+// }
+
+// button.onclick = buttonclickedHandler;
+
+button.addEventListener();
+
+// button.removeEventListener()

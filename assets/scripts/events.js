@@ -10,7 +10,7 @@ const buttons = document.querySelectorAll('button');
 // }
 
 const buttonclickedHandler = event => {
-    event.target.disabled = true;
+    // event.target.disabled = true;
     console.log(event)
     console.log(event.target)
     event.target.style.backgroundColor = 'black'
@@ -32,7 +32,11 @@ const boundFn = buttonclickedHandler.bind(this)
 // },2000)
 
 buttons.forEach( btn => {
-    btn.addEventListener('click', buttonclickedHandler)
+    btn.addEventListener('mouseenter', buttonclickedHandler)
+})
+
+window.addEventListener('scroll', event => {
+    console.log(event)
 })
 
 

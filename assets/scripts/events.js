@@ -4,16 +4,26 @@ const button = document.querySelector('button');
 //     console.log('Love is the key...')
 // }
 
-// const buttonclickedHandler = () => {
-//     alert('Button was clicked')
-// }
+const buttonclickedHandler = () => {
+    alert('Button was clicked')
+}
 
-// const anotherButtonClickedHandler = () => {
-//     console.log('This was clicked')
-// }
+const anotherButtonClickedHandler = () => {
+    alert('This was clicked')
+}
 
 // button.onclick = buttonclickedHandler;
+// button.onclick - anotherButtonClickedHandler;
 
-button.addEventListener();
+const boundFn = buttonclickedHandler.bind(this)
 
-// button.removeEventListener()
+button.addEventListener('click', boundFn);
+
+setTimeout(() => {
+    button.removeEventListener('click', boundFn)
+},2000)
+
+
+
+
+

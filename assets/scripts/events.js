@@ -1,5 +1,5 @@
-// const button = document.querySelector('button');
-const buttons = document.querySelectorAll('button');
+const button = document.querySelector('button');
+// const buttons = document.querySelectorAll('button');
 
 // button.onclick = function() {
 //     console.log('Love is the key...')
@@ -12,8 +12,6 @@ const buttons = document.querySelectorAll('button');
 const buttonclickedHandler = event => {
     // event.target.disabled = true;
     console.log(event)
-    console.log(event.target)
-    event.target.style.backgroundColor = 'black'
 }
 
 const anotherButtonClickedHandler = () => {
@@ -21,7 +19,7 @@ const anotherButtonClickedHandler = () => {
 }
 
 // button.onclick = buttonclickedHandler;
-// button.onclick - anotherButtonClickedHandler;
+// button.onclick = anotherButtonClickedHandler;
 
 const boundFn = buttonclickedHandler.bind(this)
 
@@ -31,11 +29,29 @@ const boundFn = buttonclickedHandler.bind(this)
 //     button.removeEventListener('click',buttonclickedHandler)
 // },2000)
 
-buttons.forEach( btn => {
-    btn.addEventListener('mouseenter', buttonclickedHandler)
+// buttons.forEach( btn => {
+//     btn.addEventListener('mouseenter', buttonclickedHandler)
+// })
+
+// window.addEventListener('scroll', event => {
+//     console.log(event)
+// })
+
+const form = document.querySelector('form')
+form.addEventListener('submit', event => {
+    event.preventDefault()
+    console.log(event)
 })
 
-window.addEventListener('scroll', event => {
+const div = document.querySelector('div')
+
+div.addEventListener('click', event => {
+    console.log('Clicked Div')
+    console.log(event);
+})
+
+button.addEventListener('click', event => {
+    console.log('Clicked Button')
     console.log(event)
 })
 

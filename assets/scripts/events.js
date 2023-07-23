@@ -46,16 +46,15 @@ form.addEventListener('submit', event => {
 const div = document.querySelector('div')
 
 div.addEventListener('click', event => {
-    button.style.backgroundColor = 'black'
-    // button.remove()
     console.log('Clicked Div')
     console.log(event);
 })
 
-button.addEventListener('click', event => {
-    // event.stopPropagation()
+button.addEventListener('click', function(event) {
+    event.stopPropagation()
     console.log('Clicked Button')
     console.log(event)
+    console.log(this)
 })
 
 const listItems = document.querySelectorAll('li')
@@ -72,6 +71,8 @@ list.addEventListener('click', event =>{
     // console.log(event.currentTarget)
     // event.target.classList.toggle('highlight')
     event.target.closest('li').classList.toggle('highlight')
+    // form.submit()
+    button.click()
     // event.target.closest('li').remove()
 
 })

@@ -39,3 +39,16 @@ button:active {
 #long-one{
   height: 3000px;
 }
+
+li {
+  padding: 1rem;
+  border: 1px solid #ccc
+}
+
+ul{
+  list-style-type: none;
+}
+.highlight{
+  background-color: #e92f6d;
+  color: aliceblue;
+}

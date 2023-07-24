@@ -87,6 +87,7 @@ class Projectitem {
         this.updateProjectListHandler = updateProjectListFunction; // switchHandler() from ProjectList
         this.connectMoreInfoButton();
         this.connectSwithchButton(type);
+        this.connectDrag(); //calls connectDrag
     }
 
     showMoreInfoHandler() { // called when more info Btn is clicked
@@ -101,6 +102,14 @@ class Projectitem {
         tooltip.attach();  //calls attatch method in Tooltip extended Class Component object that determsines where tooltip dialog will appear 
         this.hasActiveToolTip = true; // sets tooltip element status to active to ensure that that clicking More Info Btn won't add another toolTip.
     }
+
+    connectDrag() { //called from constructor, method for draggable listItems. configures drag event.
+        document.getElementById(this.id).addEventListener('dragstart', event => {
+           event.dataTransfer.setData('text/plain', this.id);  //used to identify the type of data. this.id is plain text
+           event.dataTransfer.effectAllowed = 'move'; // desciped the type of operation being carried out
+        })
+    }
+
    
     connectMoreInfoButton(){ //connects to more info Button
         const projectItemElement = document.getElementById(this.id);

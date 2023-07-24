@@ -104,9 +104,14 @@ class Projectitem {
     }
 
     connectDrag() { //called from constructor, method for draggable listItems. configures drag event.
-        document.getElementById(this.id).addEventListener('dragstart', event => { // dragstart is fired when the user starts dragging an element or text selection.
+        const item = document.getElementById(this.id);
+            item.addEventListener('dragstart', event => { // dragstart is fired when the user starts dragging an element or text selection.
            event.dataTransfer.setData('text/plain', this.id);  //used to identify the type of data. this.id is plain text
            event.dataTransfer.effectAllowed = 'move'; // describes the type of operation being carried out
+        })
+
+        item.addEventListener('dragend', event => { // function for action taken when drag ends
+            console.log(event)
         })
     }
 
@@ -164,6 +169,16 @@ class ProjectList {
                 list.parentElement.classList.remove('droppable') // if elemt ment is nit inside of the listItem the css style is removed
             }  
         })
+
+        list.addEventListener('drop', event => { // method for actually dropping dragged item to it;s destination
+            const prjId = event.dataTransfer.getData('text/plain');
+            if (this.projects.find(p => p.id === prjId)) { // if true the drop is aborted to prevent adding the same item to list
+                return; 
+            }
+            document.getElementById(prjId).querySelector('button:last-of-type').click() // moves item by invoking switchProject
+            list.parentElement.classList.remove('droppable');
+            // event.preventDefault() // not required
+        })
     }
 
     setSwitchHandlerFunction(switchHandlerFunction){ //gets called on instatiation and passed pointer to object functiion addProject
@@ -174,7 +189,7 @@ class ProjectList {
     addProject(project) { // called in switchProject from switchHandler in the instance that will add project - gets passed projectId from swithcProject
         this.projects.push(project) //gets project from array
         DOMHelper.moveElement(project.id, `#${this.type}-projects ul`) //calls DOMHelper static method moveElemt and passes elementId and ul Id type of list item to be moved
-        project.update(this.switchProject.bind(this), this.type)//calls update method in ProjectItem and passes swithcProject method. reaches out to project we get as argument. used as defined in class App for newInstance. type lets it know which list its in(important for updateing buttom txt)
+        project.update(this.switchProject.bind(this), this.type)//calls update method in ProjectItem and passes swithcProject method. reaches out to project we get as argument. used as defined in class App for newInstance. type lets it know which list its in(needed for updateing buttom txt)
     }
 
     switchProject(projectId) { //passed to ProjectItem constructor then to eventListener / getrs projectTd from eventListener passes to addProject

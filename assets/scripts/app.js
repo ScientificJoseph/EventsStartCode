@@ -167,11 +167,11 @@ class App {
         // this.startAnalytics()
         // document.getElementById('start-analytics-btn').addEventListener('click', this.startAnalytics)
 
-        const timerId = setTimeout(this.startAnalytics, 3000) // accepts functions, time, array of arguments
+        // const timerId = setTimeout(this.startAnalytics, 3000) // accepts functions, time, array of arguments
 
-        document.getElementById('stop-analytics-btn').addEventListener('click', () => {
-            clearTimeout(timerId) // must pass the id. this doenet stop timeout due to interval set in analytics.js
-        })
+        // document.getElementById('stop-analytics-btn').addEventListener('click', () => {
+        //     clearTimeout(timerId) // must pass the id. this doenet stop timeout due to interval set in analytics.js
+        // })
         
 
     }

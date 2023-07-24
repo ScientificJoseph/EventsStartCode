@@ -87,7 +87,7 @@ class Projectitem {
         this.updateProjectListHandler = updateProjectListFunction; // switchHandler() from ProjectList
         this.connectMoreInfoButton();
         this.connectSwithchButton(type);
-        this.connectDrag(); //calls connectDrag
+        this.connectDrag(); //calls connectDrag method
     }
 
     showMoreInfoHandler() { // called when more info Btn is clicked
@@ -104,9 +104,9 @@ class Projectitem {
     }
 
     connectDrag() { //called from constructor, method for draggable listItems. configures drag event.
-        document.getElementById(this.id).addEventListener('dragstart', event => {
+        document.getElementById(this.id).addEventListener('dragstart', event => { // dragstart is fired when the user starts dragging an element or text selection.
            event.dataTransfer.setData('text/plain', this.id);  //used to identify the type of data. this.id is plain text
-           event.dataTransfer.effectAllowed = 'move'; // desciped the type of operation being carried out
+           event.dataTransfer.effectAllowed = 'move'; // describes the type of operation being carried out
         })
     }
 
@@ -140,6 +140,30 @@ class ProjectList {
         for (const prjItem of prjItems) {
             this.projects.push(new Projectitem(prjItem.id, this.switchProject.bind(this),this.type)) //project we want to switch passed to ProjectItem Constructor then passed to eventlistener to call switchProject
         }
+        console.log(this.projects)
+        this.connectDroppable(); //calls connectDroppable method
+    }
+
+    connectDroppable() { // called from consructor, method used to identify dropZone. configures drop area
+        const list = document.querySelector(`#${this.type}-projects ul`); // gives access to the ul
+
+        list.addEventListener('dragenter', event => { // checks to make sure the right data is being dropped
+            if (event.dataTransfer.types[0] === 'text/plain') {
+                list.parentElement.classList.add('droppable') // adds clas that adds color to section once dragable item starts being draged
+                event.preventDefault()
+            } 
+        })
+
+        list.addEventListener('dragover', event => { // checks to make sure the right data is being dropped / must include dragover and set perventDefault
+            if (event.dataTransfer.types[0] === 'text/plain') {
+                event.preventDefault()
+            }
+        })  
+        list.addEventListener('dragleave', event => {
+            if (event.relatedTarget.closest(`#${this.type}-projects ul`) !== list) { // prevents drag color style from being removed while draging over other elements within the list item
+                list.parentElement.classList.remove('droppable') // if elemt ment is nit inside of the listItem the css style is removed
+            }  
+        })
     }
 
     setSwitchHandlerFunction(switchHandlerFunction){ //gets called on instatiation and passed pointer to object functiion addProject

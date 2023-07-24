@@ -50,7 +50,7 @@ div.addEventListener('click', event => {
     console.log(event);
 })
 
-button.addEventListener('click', function(event) {
+button.addEventListener('click', function(event) { //traditional function changes the this context
     event.stopPropagation()
     console.log('Clicked Button')
     console.log(event)

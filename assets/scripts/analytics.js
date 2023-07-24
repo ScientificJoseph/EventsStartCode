@@ -5,5 +5,5 @@ const intervalId = setInterval(() => {
 },2000)
 
 document.getElementById('stop-analytics-btn').addEventListener('click', () => {
-    clearInterval(intervalId)
+    clearInterval(intervalId) //must pass the id
 })

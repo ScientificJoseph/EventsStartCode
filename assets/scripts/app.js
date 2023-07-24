@@ -170,7 +170,7 @@ class App {
         const timerId = setTimeout(this.startAnalytics, 3000) // accepts functions, time, array of arguments
 
         document.getElementById('stop-analytics-btn').addEventListener('click', () => {
-            clearTimeout(timerId)
+            clearTimeout(timerId) // must pass the id. this doenet stop timeout due to interval set in analytics.js
         })
         
 

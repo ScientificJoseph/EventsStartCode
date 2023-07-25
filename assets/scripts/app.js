@@ -166,11 +166,11 @@ class ProjectList {
         })  
         list.addEventListener('dragleave', event => {
             if (event.relatedTarget.closest(`#${this.type}-projects ul`) !== list) { // prevents drag color style from being removed while draging over other elements within the list item
-                list.parentElement.classList.remove('droppable') // if elemt ment is nit inside of the listItem the css style is removed
+                list.parentElement.classList.remove('droppable') // if element is not inside of the listItem the css style is removed
             }  
         })
 
-        list.addEventListener('drop', event => { // method for actually dropping dragged item to it;s destination
+        list.addEventListener('drop', event => { // method for actually dropping dragged item to it's destination
             const prjId = event.dataTransfer.getData('text/plain');
             if (this.projects.find(p => p.id === prjId)) { // if true the drop is aborted to prevent adding the same item to list
                 return; 

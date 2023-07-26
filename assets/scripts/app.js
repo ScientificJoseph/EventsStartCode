@@ -149,7 +149,7 @@ class ProjectList {
         this.connectDroppable(); //calls connectDroppable method
     }
 
-    connectDroppable() { // called from consructor, method used to identify dropZone. configures drop area
+    connectDroppable() { // called from constructor, method used to identify dropZone. configures drop area
         const list = document.querySelector(`#${this.type}-projects ul`); // gives access to the ul
 
         list.addEventListener('dragenter', event => { // checks to make sure the right data is being dropped

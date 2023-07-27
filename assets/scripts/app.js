@@ -105,7 +105,8 @@ class Projectitem {
 
     connectDrag() { //called from constructor, method for draggable listItems. configures drag event.
         const item = document.getElementById(this.id);
-            item.addEventListener('dragstart', event => { // dragstart is fired when the user starts dragging an element or text selection.
+
+         item.addEventListener('dragstart', event => { // dragstart is fired when the user starts dragging an element or text selection.
            event.dataTransfer.setData('text/plain', this.id);  //used to identify the type of data. this.id is plain text
            event.dataTransfer.effectAllowed = 'move'; // describes the type of operation being carried out
         })

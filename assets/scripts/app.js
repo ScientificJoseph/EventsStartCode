@@ -170,7 +170,7 @@ class ProjectList {
             }  
         })
 
-        list.addEventListener('drop', event => { // method for actually dropping dragged item to it's destination
+        list.addEventListener('drop', event => { // method for fireing event when item is dropped
             const prjId = event.dataTransfer.getData('text/plain');
             if (this.projects.find(p => p.id === prjId)) { // if true the drop is aborted to prevent adding the same item to list
                 return; 

@@ -155,7 +155,7 @@ class ProjectList {
 
         list.addEventListener('dragenter', event => { // checks to make sure the right data is being dropped
             if (event.dataTransfer.types[0] === 'text/plain') {
-                list.parentElement.classList.add('droppable') // adds clas that adds color to section once dragable item starts being draged
+                list.parentElement.classList.add('droppable') // class droppable adds color to section (el parent element) once dragable item enters the dropzone wich is the ul
                 event.preventDefault()
             } 
         })
